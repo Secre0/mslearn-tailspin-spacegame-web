@@ -2,7 +2,7 @@ trigger:
 - '*'
 
 pool:
-  vmImage: 'ubuntu-22.04'  # Use ubuntu-20.04 if needed
+  vmImage: 'ubuntu-22.04'
 
 variables:
   buildConfiguration: 'Release'
@@ -39,7 +39,7 @@ steps:
   workingDirectory: Tailspin.SpaceGame.Web/wwwroot
 
 - task: DotNetCoreCLI@2
-  display project dependencies'
+  displayName: 'Restore project dependencies'
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
@@ -50,4 +50,3 @@ steps:
     command: 'build'
     arguments: '--no-restore --configuration Release'
     projects: '**/*.csproj'
-
