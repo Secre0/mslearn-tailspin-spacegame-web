@@ -17,6 +17,15 @@ steps:
   inputs:
     version: '$(dotnetSdkVersion)'
 
+- task: UseNode@1
+  displayName: 'Install Node.js 14 and NPM 6'
+  inputs:
+    version: '14.x'
+    checkLatest: true
+
+- script: 'npm install -g npm@6'
+  displayName: 'Downgrade NPM to v6'
+
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
