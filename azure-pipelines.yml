@@ -62,10 +62,10 @@ steps:
     arguments: 'restore'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Run unit tests - $(buildConfiguration) without coverage'
+  displayName: 'Run unit tests - $(buildConfiguration)'
   inputs:
     command: 'test'
-    arguments: '--configuration $(buildConfiguration) /logger "trx;LogFileName=test_results.trx" --verbosity detailed'
+    arguments: '--no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
     publishTestResults: true
     projects: '**/*.Tests.csproj'
 
